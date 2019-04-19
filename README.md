@@ -172,7 +172,7 @@ Hat leider nicht funktioniert. Der Port wurde freigegeben und aus der Firewall e
     ! Port: 8080 (192.158.30.10:80)                                 !  
     !                                                               !  
     !    +--------------------+          +---------------------+    !
-    !    ! Wordpress Service  !          ! CheckMK Client      !    ! 
+    !    ! Wordpress Service  !          ! MySQL               !    ! 
     !    ! Host: Wordpress    !          ! Host: client        !    !
     !    ! IP: 192.168.30.1 0 ! <------> ! IP: 192.168.33.1    !    !
     !    ! Port: 80           !          ! Port: -             !    !
@@ -180,8 +180,6 @@ Hat leider nicht funktioniert. Der Port wurde freigegeben und aus der Firewall e
     !    +--------------------+          +---------------------+    !
     !                                                               !  
     +---------------------------------------------------------------+
-
-![Bild 11](Bild11.PNG)
 
 
 ## Reflexion
