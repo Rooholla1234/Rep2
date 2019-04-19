@@ -1,0 +1,56 @@
+# Version from Docker-Compose
+version: '3.3'
+
+# service: creates 3 containers mysql, wordpress and phpmyadmin
+services:
+   db:
+   # Creates database container and uses image mysql version 5.7
+     image: mysql:5.7
+     # Select the volume for the data, otherwise it will be deleted after container are down, now it persists.
+     volumes:
+       #Directory for the volume on localhost
+       - db_data:/var/lib/mysql
+     # Always restarting the container after creating to prevent errors.
+     restart: always
+     # Settings for Container Passwords, Users and Databases which should be created
+     environment:
+       MYSQL_ROOT_PASSWORD: rootpassword
+       MYSQL_DATABASE: wordpress_safari
+       MYSQL_USER: dbuser
+       MYSQL_PASSWORD: Test1234
+   
+   # Creates wordpress container uses image wordpress latest version.
+   wordpress:
+     # depends_on means that the wordpress container is in dependency with the db container and will not be created before the db.
+     depends_on:
+       - db
+     image: wordpress:latest
+     # Website is accessibly with Port 8000
+     ports:
+       - "8000:80"
+     # Always restarting the container after creating to prevent errors.
+     restart: always
+     # Settings for Container Passwords, Users to connect to the database.
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: dbuser
+       WORDPRESS_DB_PASSWORD: Test1234
+       WORDPRESS_DB_NAME: wordpress
+   # Creates PMA Container with latest Version of PMA    
+   phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+    # PMA is accessibly with Port 8080
+     - "8080:80"
+     # Always restarting the container after creating to prevent errors.
+    restart: always
+    # links PMA to database network. It wont search a db local
+    links:
+     - db
+    # Settings to connect to the db
+    environment:
+     PMA_HOST: db
+     PMA_PORT: 3306
+# initates Volume     
+volumes:
+    db_data: {}
