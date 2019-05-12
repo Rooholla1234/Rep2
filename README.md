@@ -15,7 +15,7 @@ Mein Service besteht aus drei verknüpften Containern. Einem Wordpress, MySQL un
 
 **Netzwerkplan:**
 
-![Netzwerkplan](https://github.com/Rooholla1234/Rep2/blob/master/Netzwerkplan.png)
+![Netzwerkplan](https://github.com/Rooholla1234/Rep2/blob/master/Netzwerkplan.PNG)
 
 
 **Aufschaltung**
